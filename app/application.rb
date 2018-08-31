@@ -2,6 +2,8 @@ class Application
 
   @@items = ["Apples","Carrots","Pears"]
 
+  @@cart = []
+
   def call(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
@@ -17,7 +19,7 @@ class Application
       if @@items == []
         resp.write "Your cart is empty"
       else
-        @@items.each do |x|
+        @@cart.each do |x|
           resp.write "#{x}\n"
         end
       end
